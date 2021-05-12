@@ -1,18 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Link, Links, Route } from 'react-router-dom';
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { PostsList, Navbar } from './';
-const Login = ()=>(
-  <div>Login</div>
-);
+import { Home, Navbar ,Page404,Login } from './';
+
 const SignUp = () =>(
-  <div>SignUp</div>
+  <div>Hey Register to youself in Our Website!</div>
 );
-const Home = () =>(
-  <div>Home</div>
-)
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -25,15 +21,21 @@ class App extends React.Component {
       <Router>
         <div>
           <Navbar />
-          {/* <PostsList posts={posts} /> */}
+          <Switch>
+          {/* <PostsList posts={posts} />
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/Login">Login</Link></li>
             <li><Link to="/SignUp">SignUp</Link></li>
-          </ul>
-          <Route exact={true} path="/" component={Home} />
+          </ul> */}
+          <Route exact={true} path="/" render={(props)=>
+          {
+            return <Home {...props} posts={posts}/>
+          }} />
           <Route path="/Login" component={Login} />
           <Route path="/SignUp" component={SignUp} />
+          <Route component={Page404} />
+          </Switch>
         </div>
       </Router>
     );
