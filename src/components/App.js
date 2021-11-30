@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { Home, Navbar ,Page404,Login } from './';
+import { Home, Navbar ,Page404,Login ,Signup} from './';
 
-const SignUp = () =>(
-  <div>Hey Register to youself in Our Website!</div>
-);
+// const SignUp = () =>(
+//   <div>Hey Register to youself in Our Website!</div>
+// );
 
 
 class App extends React.Component {
@@ -33,7 +33,7 @@ class App extends React.Component {
             return <Home {...props} posts={posts}/>
           }} />
           <Route path="/Login" component={Login} />
-          <Route path="/SignUp" component={SignUp} />
+          <Route path="/Signup" component={Signup} />
           <Route component={Page404} />
           </Switch>
         </div>
